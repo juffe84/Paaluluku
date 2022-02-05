@@ -1,6 +1,6 @@
 namespace Paaluluku;
 
-public class Distance
+public static class Distance
 {
     public static double LaskeEtaisyys(Point _point, Line _line)
     {
