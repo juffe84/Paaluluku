@@ -1,4 +1,9 @@
 ﻿// See https://aka.ms/new-console-template for more information
+// Tekemättä Arc, Clothoid sekä itse paaluluku.
+// Tehty sivumitta linestä
+/**
+ * Landxml Alignment solver
+ */
 
 using Paaluluku;
 
