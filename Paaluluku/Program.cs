@@ -8,15 +8,15 @@
 using Paaluluku;
 
 //X,Y menee nurinkurin maantieteellisesti. Eli tämä x=maantieteellisesti y
-Point point = new Point(24470545.002, 6819503.765);
-Line line = new Line(24470500.265, 6819429.588, 24470543.969, 6819487.727);
-Arc arc = new Arc("cw", 41.125570, 109.821170, 58.857618, 42.244623, 52.769902, 73.746890, 24470544.778496,
-    6819488.337282, 24470584.666041, 6819498.352086, 24470576.556914, 6819446.208969);
+Point point = new Point(45.97, 112.243);
+Line line = new Line(0, 0, 40, 100);
+Arc arc = new Arc("cw", 35.065834, 77.443252, 48.497498, 35.369726, 77.789610, 108.718368, 40.700626,
+    100.734503, 70.000000, 120.000000, 96.988947, 47.042339);
 
 
 DistanceResult result = Distance.LaskeEtaisyys(point, line);
 DistanceResult resultArc = Distance.SolveArc(point, arc);
-Console.WriteLine(resultArc.paaluLuku);
+Console.WriteLine("Paaluluku Arc:" + resultArc.paaluLuku);
 Console.WriteLine("Sivumitta Arc: " + resultArc.pisteEtaisyysLinjasta);
 Console.WriteLine("Paaluluku: " + result.paaluLuku);
 Console.WriteLine("Sivumitta: " + result.pisteEtaisyysLinjasta);
