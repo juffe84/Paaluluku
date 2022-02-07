@@ -38,6 +38,55 @@ public static class Distance
         return new DistanceResult(b2, a);
     }
 
+    public static DistanceResult SolveArc(Point _point, Arc _arc)
+    {
+        //keskipisteen ja annetun pisteen välimatka:
+        double dxyCenter_Point;
+        double distance;
+        double dxyStart_Point;
+        double dxyEnd_Point;
+        //double radius; ei kannata radiusta laskea, koska annettu riittävän tarkasti lähtötiedoissa
+        dxyCenter_Point = Math.Sqrt((_point.x - _arc.centerX) * (_point.x - _arc.centerX) +
+                                    (_point.y - _arc.centerY) * (_point.y - _arc.centerY));
+        distance = dxyCenter_Point - _arc.radius;
+        /*  
+          radius = Math.Sqrt((_arc.startX - _arc.centerX) * (_arc.startX - _arc.centerX) +
+                             (_arc.startY - _arc.centerY) * (_arc.startY - _arc.centerY));
+      */
+        double deltaX = _point.x - _arc.centerX;
+        double deltaY = _point.y - _arc.centerY;
+
+        double dXAlku= _arc.startX - _arc.centerX;;
+        double dYAlku= _arc.startY - _arc.centerY;;
+
+        double dXLoppu= _arc.endX - _arc.centerX;;
+        double dYLoppu= _arc.endY - _arc.centerY;;
+        
+        //kaikki kulmat, jotka osuu alun ja lopun välille ovat arcin sisällä.
+        //https://stackoverflow.com/questions/66352469/using-atan2-with-offset-circle
+        double alkurad=Math.Atan2(dYAlku,dXAlku);
+        double loppurad=Math.Atan2(dYLoppu,dXLoppu);
+        
+        double pisterad=Math.Atan2(deltaY,deltaX);
+        
+        //double gon = rad * 63.6619772368;
+        //Console.WriteLine(gon);
+        if (pisterad<alkurad&&pisterad>loppurad)
+        {
+            return new DistanceResult(distance, 1);
+        }
+        else
+        {
+            Console.WriteLine(pisterad);
+            Console.WriteLine(alkurad);
+            Console.WriteLine(loppurad);
+            return new DistanceResult(1, 1);
+        }
+        
+        
+    }
+
+      
     /*
     public static bool IsLeft(Point _point, Line _line)
     {
